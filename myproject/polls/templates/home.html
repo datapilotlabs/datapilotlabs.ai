@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Datapilot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* GLOBAL */
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+    background:#060910;
+    overflow-x:hidden;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+main{
+    flex:1;
+}
+
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    background:linear-gradient(135deg,#141E30,#243B55);
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.navbar-brand{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+
+/* HERO */
+
+.hero{
+    padding:160px 20px 100px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:65px;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.hero-btn{
+    background:linear-gradient(47deg,#0d6efd,#0b416d);
+    color:white;
+    border:none;
+    padding:14px 30px;
+    font-weight:600;
+    font-size:20px;
+    border-radius:8px;
+}
+
+.hero-btn:hover{
+    background:linear-gradient(45deg,#0b5ed7,#339af0);
+    transform:translateY(-2px);
+}
+
+.bts{
+    background:linear-gradient(47deg,#0d6efd,#0b416d);
+    color:white;
+    border:none;
+    padding:18px 60px;
+    font-weight:600;
+    font-size:20px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+
+/* FEATURES */
+
+.features{
+    padding:80px 20px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,0.06);
+    border:none;
+    border-radius:18px;
+    padding:35px;
+    transition:0.4s;
+    backdrop-filter:blur(12px);
+}
+
+.feature-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0px 20px 45px rgba(0,0,0,0.5);
+}
+
+.feature-icon{
+    font-size:50px;
+    margin-bottom:18px;
+    color:#00c6ff;
+}
+
+
+/* CTA */
+
+.cta{
+    padding:100px 20px;
+    text-align:center;
+    background:linear-gradient(135deg,#04abff,#044089);
+}
+
+
+/* CLIENTS */
+
+.clients{
+    padding:170px 20px;
+    text-align:center;
+}
+
+.clients h1{
+    font-size:70px;
+    font-weight:bolder;
+}
+
+
+/* CONTACT */
+
+.contact{
+    padding:170px 20px;
+    text-align:center;
+    background:#0f172a;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#000;
+    padding:20px;
+    text-align:center;
+    color:#aaa;
+    margin-top:auto;
+}
+
+
+/* COLORS */
+
+.data-color{
+    color:#00c6ff;
+    font-weight:800;
+}
+
+.data-colors{
+    color:#00c6ff;
+    font-weight:bold;
+}
+/* ---------- FIXED FOOTER SECTION ---------- */
+
+.contact{
+padding:80px 20px;
+background:#0f172a;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+flex-wrap:wrap;
+gap:40px;
+margin-top:40px;
+}
+
+.footer-left{
+max-width:400px;
+text-align:left;
+}
+
+.footer-links,
+.footer-contact{
+text-align:left;
+}
+
+.footer-links ul,
+.footer-contact ul{
+list-style:none;
+padding:0;
+}
+
+.footer-links li,
+.footer-contact li{
+margin:12px 0;
+}
+
+.footer-links a{
+text-decoration:none;
+color:white;
+}
+
+.footer-links a:hover{
+color:#00c6ff;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+.btn-light{
+color:#2082fb;
+font-weight: bold;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<main>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+            Datapilot
+        </a>
+
+        <div class="ms-auto">
+            <a href="#" class="btn btn-outline-light me-2">Home</a>
+            <a href="{% url 'about' %}" class="btn btn-outline-light me-2">About</a>
+            <a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="container">
+
+<h1>
+Automate Your <span class="data-color">Data Science</span> Workflow
+</h1>
+
+<h1>
+Simply, Fast, Automated.
+</h1>
+
+<h3>
+Turn Raw Data into Intelligent Insights
+</h3>
+
+<br>
+
+<a href="{% url 'signup' %}" class="btn btn-primary hero-btn me-4">
+Get Started → 
+</a>
+
+<a href="{% url 'login' %}" class="btn btn-primary hero-btn">
+Login
+</a>
+
+</div>
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h2 style="font-size:60px;">
+Platform <span class="data-colors">Features</span>
+</h2>
+
+<p style="font-size:26px;">
+End-to-end AI automation services that help optimize and modernize your business processes.
+</p>
+
+</div>
+
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-database"></i>
+<i class="fa-solid fa-broom"></i>
+</div>
+
+<h3>Smart Data Cleaning</h3>
+
+<p>
+Automatically remove duplicates, handle null values, and detect outliers.
+</p>
+
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-chart-column"></i>
+</div>
+
+<h4>Instant Visualization</h4>
+
+<p>
+Generate beautiful charts and visual insights from raw datasets.
+</p>
+
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-brain"></i>
+</div>
+
+<h4>Auto ML Models</h4>
+
+<p>
+Automatically train machine learning models for prediction and analysis.
+</p>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<div class="container">
+
+<h2 style="font-weight:900;font-size:60px;">
+Start Your Data Science Journey
+</h2>
+
+<h2 style="font-weight:900;font-size:60px;">
+Today
+</h2>
+
+<p style="font-size:28px;">
+Contact Us and start analyzing datasets instantly.
+</p>
+
+<a href="{% url 'signup' %}" class="btn btn-light btn-lg demo-btn">
+Contact Us
+</a>
+</div>
+</section>
+
+
+<!-- CLIENTS -->
+
+<section class="clients">
+
+<div class="container">
+
+<h1>{{clients}}+ Clients Worldwide</h1>
+
+<p style="font-size:30px;font-weight:100;">
+Trusted by data scientists, researchers and startups.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT / FOOTER -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="footer-container">
+
+
+<div class="footer-left">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+Datapilot
+</a>
+
+<p style="margin-top:16px; font-size: 30px;">
+Delivering quantifiable growth with enterprise-grade AI solutions for modern organizations.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<h4>Quick Links</h4>
+
+<ul>
+<li><a href="{% url 'home'%}">Home</a></li>
+<li><a href="{% url 'about'%}">About</a></li>
+<li><a href="{% url 'contact'%}">Contact</a></li>
+<li><a href="{% url 'login' %}">Login</a></li>
+<li><a href="{% url 'signup' %}">Signup</a></li>
+</ul>
+
+</div>
+
+
+<div class="footer-contact">
+
+<h4>Contact</h4>
+
+<ul>
+<li>datapilot.ai@gmail.com</li>
+<li>Hyderabad, India</li>
+</ul>
+
+</div>
+
+
+</div>
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+<p>© 2026 DataPilot. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+/* GET CANVAS */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+/* CANVAS SIZE */
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+/* -----------------------------
+   STARS BACKGROUND
+------------------------------*/
+
+let stars = [];
+
+for (let i = 0; i < 150; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        alpha: Math.random()
+    });
+}
+
+
+/* -----------------------------
+   METEORS
+------------------------------*/
+
+let meteors = [];
+
+function createMeteor() {
+    meteors.push({
+        x: Math.random() * canvas.width,
+        y: 0,
+        length: Math.random() * 80 + 50,
+        speed: Math.random() * 6 + 4,
+        opacity: 1
+    });
+}
+
+
+/* CREATE METEOR EVERY 2 SECONDS */
+
+setInterval(createMeteor, 2000);
+
+
+/* -----------------------------
+   ANIMATION LOOP
+------------------------------*/
+
+function animate() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    /* DRAW STARS */
+
+    stars.forEach(star => {
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+
+        ctx.fillStyle = "white";
+        ctx.fill();
+
+    });
+
+
+    /* DRAW METEORS */
+
+    meteors.forEach((meteor, index) => {
+
+        ctx.beginPath();
+
+        ctx.moveTo(meteor.x, meteor.y);
+        ctx.lineTo(
+            meteor.x - meteor.length,
+            meteor.y + meteor.length
+        );
+
+        ctx.strokeStyle = "rgba(255,255,255," + meteor.opacity + ")";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+
+        meteor.x -= meteor.speed;
+        meteor.y += meteor.speed;
+        meteor.opacity -= 0.01;
+
+
+        if (meteor.opacity <= 0) {
+            meteors.splice(index, 1);
+        }
+
+    });
+
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+
+/* -----------------------------
+   RESPONSIVE CANVAS
+------------------------------*/
+
+window.addEventListener("resize", () => {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
+
+</script>
+
+
+</body>
+</html>

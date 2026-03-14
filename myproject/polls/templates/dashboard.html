@@ -1,0 +1,552 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datapilot</title>
+    {% load static %}
+
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#060910;
+}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+background:#060910;
+overflow-x:hidden;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+
+
+
+/* FORM BOX */
+
+.containers{
+width:380px;
+padding:40px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+/* TITLE */
+
+.container h2{
+margin-bottom:25px;
+color:#333;
+}
+
+/* FORM */
+
+form{
+display:flex;
+flex-direction:column;
+}
+
+input{
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:15px;
+transition:0.3s;
+}
+
+input:focus{
+border-color:#667eea;
+box-shadow:0 0 5px rgba(102,126,234,0.4);
+outline:none;
+}
+
+/* BUTTON */
+
+button{
+padding:12px;
+background:#667eea;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#5a67d8;
+}
+
+/* LINKS */
+
+.link{
+margin-top:15px;
+font-size:14px;
+}
+
+.link a{
+text-decoration:none;
+color:#667eea;
+font-weight:500;
+}
+
+.link a:hover{
+text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:450px){
+
+.containers{
+width:90%;
+}
+
+}
+.cta{
+    padding:100px 20px;
+    text-align:center;
+    background:linear-gradient(135deg,#04abff,#044089);
+}
+
+
+/* CLIENTS */
+
+.clients{
+    padding:170px 20px;
+    text-align:center;
+}
+
+.clients h1{
+    font-size:70px;
+    font-weight:bolder;
+}
+
+
+/* CONTACT */
+
+.contact{
+    padding:170px 20px;
+    text-align:center;
+    background:#0f172a;
+}
+/* FOOTER */
+
+footer{
+    background:#000;
+    padding:20px;
+    text-align:center;
+    color:#aaa;
+    margin-top:auto;
+}
+
+
+/* COLORS */
+
+.data-color{
+    color:#00c6ff;
+    font-weight:800;
+}
+
+.data-colors{
+    color:#00c6ff;
+    font-weight:bold;
+}
+/* ---------- FIXED FOOTER SECTION ---------- */
+
+.contact{
+padding:80px 20px;
+background:#0f172a;
+}
+
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+flex-wrap:wrap;
+gap:40px;
+margin-top:40px;
+}
+
+.footer-left{
+max-width:400px;
+text-align:left;
+}
+
+.footer-links,
+.footer-contact{
+text-align:left;
+}
+
+.footer-links ul,
+.footer-contact ul{
+list-style:none;
+padding:0;
+}
+
+.footer-links li,
+.footer-contact li{
+margin:12px 0;
+}
+
+.footer-links a{
+text-decoration:none;
+color:white;
+}
+
+.footer-links a:hover{
+color:#00c6ff;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+.btn-light{
+color:#2082fb;
+font-weight: bold;
+}
+.features{
+    padding:80px 20px;
+}
+
+.feature-card{
+    background:rgb(50, 50, 50);
+    border:none;
+    border-radius:18px;
+    padding:35px;
+    transition:0.4s;
+    backdrop-filter:blur(12px);
+}
+
+.feature-card:hover{
+    transform:translateY(-12px) scale(1.03);
+    box-shadow:0px 20px 45px rgba(0,0,0,0.5);
+}
+
+.feature-icon{
+    font-size:50px;
+    margin-bottom:18px;
+    color:#00c6ff;
+}
+
+
+</style>
+
+</head>
+<main>
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+Datapilot
+</a>
+
+<div class="ms-auto">
+<a href="{% url 'home'%}" class="btn btn-outline-light me-2">Home</a>
+<a href="{% url 'about'%}" class="btn btn-outline-light me-2">About</a>
+<a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
+<a href="{% url 'home' %}" class="btn btn-primary">Logout</a>
+</div>
+</div>
+</nav>
+</div>
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h2 style="font-size:60px;color:aliceblue;font-weight: bolder;">
+Our <span class="data-colors">Services</span>
+</h2>
+
+<p style="font-size:26px;">
+End-to-End AI automation services that help optimize and modernize your Business processes.
+</p>
+
+</div>
+
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-database"></i>
+<i class="fa-solid fa-broom"></i>
+</div>
+
+<h3>Smart Data Cleaning</h3>
+
+<p>
+Automatically remove duplicates, handle null values, and detect outliers.
+</p>
+<a href="{% url 'smart_clean' %}" class="btn btn-light btn-lg demo-btn">
+Go
+</a>
+
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-chart-column"></i>
+</div>
+
+<h4>Instant Visualization</h4>
+
+<p>
+Generate beautiful charts and visual insights from raw datasets.
+</p>
+<a href="{% url 'data_dashboard' %}" class="btn btn-light btn-lg demo-btn">
+Go
+</a>
+
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="feature-card text-center">
+
+<div class="feature-icon">
+<i class="fa-solid fa-brain"></i>
+</div>
+
+<h4>Auto ML Models</h4>
+
+<p>
+Automatically train machine learning models for prediction and analysis.
+</p>
+<a href="{% url 'signup' %}" class="btn btn-light btn-lg demo-btn">
+Go
+</a>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<br><br>
+<br>
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="footer-container">
+
+
+<div class="footer-left">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+Datapilot
+</a>
+
+<p style="margin-top:16px; font-size: 30px;">
+Delivering quantifiable growth with enterprise-grade AI solutions for modern organizations.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<h4>Quick Links</h4>
+
+<ul>
+<li><a href="{% url 'home'%}">Home</a></li>
+<li><a href="{% url 'about'%}">About</a></li>
+<li><a href="{% url 'contact'%}">Contact</a></li>
+<li><a href="{% url 'login' %}">Login</a></li>
+<li><a href="{% url 'signup' %}">Signup</a></li>
+</ul>
+
+</div>
+
+
+<div class="footer-contact">
+
+<h4>Contact</h4>
+
+<ul>
+<li>datapilot.ai@gmail.com</li>
+<li>Hyderabad, India</li>
+</ul>
+
+</div>
+
+
+</div>
+</div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<p>© 2026 DataPilot. All Rights Reserved.</p>
+</footer>
+<script>
+
+/* CANVAS */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+/* STARS */
+
+let stars = [];
+
+for (let i = 0; i < 150; i++) {
+stars.push({
+x: Math.random() * canvas.width,
+y: Math.random() * canvas.height,
+r: Math.random() * 1.5
+});
+}
+
+
+/* METEOR COLORS */
+
+const colors = [
+"#00c6ff",
+"#ff4ecd",
+"#7c4dff",
+"#00ffcc",
+"#ffd700"
+];
+
+
+/* METEORS */
+
+let meteors = [];
+
+function createMeteor(){
+
+meteors.push({
+x: Math.random() * canvas.width,
+y: 0,
+length: Math.random() * 100 + 60,
+speed: Math.random() * 6 + 4,
+color: colors[Math.floor(Math.random()*colors.length)]
+});
+
+}
+
+setInterval(createMeteor,1500);
+
+
+/* ANIMATION */
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+stars.forEach(star=>{
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+});
+
+meteors.forEach((meteor,index)=>{
+
+ctx.beginPath();
+ctx.moveTo(meteor.x,meteor.y);
+ctx.lineTo(meteor.x-meteor.length,meteor.y+meteor.length);
+ctx.strokeStyle=meteor.color;
+ctx.lineWidth=3;
+ctx.stroke();
+
+meteor.x-=meteor.speed;
+meteor.y+=meteor.speed;
+
+if(meteor.x<-100 || meteor.y>canvas.height+100){
+meteors.splice(index,1);
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+
+/* RESPONSIVE */
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>

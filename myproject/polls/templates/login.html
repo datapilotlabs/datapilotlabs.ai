@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Datapilot | Login</title>
+    {% load static %}
+
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#060910;
+}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+background:#060910;
+overflow-x:hidden;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* CENTER SIGNUP FORM */
+
+.signup-wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding-top:90px;
+}
+
+/* FORM BOX */
+
+.containers{
+width:380px;
+padding:40px;
+background:white;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+/* TITLE */
+
+.container h2{
+margin-bottom:25px;
+color:#333;
+}
+
+/* FORM */
+
+form{
+display:flex;
+flex-direction:column;
+}
+
+input{
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:15px;
+transition:0.3s;
+}
+
+input:focus{
+border-color:#667eea;
+box-shadow:0 0 5px rgba(102,126,234,0.4);
+outline:none;
+}
+
+/* BUTTON */
+
+button{
+padding:12px;
+background:#667eea;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#5a67d8;
+}
+
+/* LINKS */
+
+.link{
+margin-top:15px;
+font-size:14px;
+}
+
+.link a{
+text-decoration:none;
+color:#667eea;
+font-weight:500;
+}
+
+.link a:hover{
+text-decoration:none;
+}
+
+/* FOOTER */
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+
+/* MOBILE */
+
+@media(max-width:450px){
+
+.containers{
+width:90%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+Datapilot
+</a>
+
+<div class="ms-auto">
+<a href="{% url 'home'%}" class="btn btn-outline-light me-2">Home</a>
+<a href="{% url 'about'%}" class="btn btn-outline-light me-2">About</a>
+<a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
+<a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+</div>
+
+</div>
+</nav>
+<div class="signup-wrapper">
+
+<div class="containers">
+
+    <h2>Login</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="error">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Enter Username" required>
+
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p class="link">
+        <p style="color: #060910;">Don't have an account?</p>
+        <a href="{% url 'signup' %}">Signup</a>
+    </p>
+
+</div>
+</div>
+
+</body>
+</html>

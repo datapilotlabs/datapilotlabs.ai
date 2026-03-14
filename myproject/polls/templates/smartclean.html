@@ -1,0 +1,247 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>DataPilot | Smart Clean</title>
+    {% load static %}
+
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+.upload-box{
+width:400px;
+height:200px;
+border:2px dashed #3b82f6;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+}
+
+button{
+background:linear-gradient(90deg,#2563eb,#06b6d4);
+border:none;
+padding:10px 20px;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+table{
+margin:auto;
+background:white;
+color:black;
+}
+/* nav bar */
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+flex-wrap:wrap;
+gap:40px;
+margin-top:40px;
+}
+
+.footer-left{
+max-width:400px;
+text-align:left;
+}
+
+.footer-links,
+.footer-contact{
+text-align:left;
+}
+
+.footer-links ul,
+.footer-contact ul{
+list-style:none;
+padding:0;
+}
+
+.footer-links li,
+.footer-contact li{
+margin:12px 0;
+}
+
+.footer-links a{
+text-decoration:none;
+color:white;
+}
+
+.footer-links a:hover{
+color:#00c6ff;
+}
+
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+
+</style>
+
+</head>
+
+<body>
+<canvas id="particles"></canvas>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+
+<a class="navbar-brand d-flex align-items-center" href="#">
+<img src="{% static 'images/logo.png' %}" width="40" class="me-2">
+Datapilot
+</a>
+
+<div class="ms-auto">
+<a href="{% url 'dashboard'%}" class="btn btn-primary me-2">Back</a>
+<a href="{% url 'home' %}" class="btn btn-primary">Logout</a>
+</div>
+</div>
+</nav>
+</div>
+<h1 style="font-size: 60px;"><span style="color:#295db1; font-weight: bold;">Datapilot</span> Smart Clean</h1>
+
+<div class="upload-box">
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<input type="file" name="dataset" required>
+
+<br><br>
+
+<button type="submit">Smart Clean</button>
+
+</form>
+
+</div>
+
+{% if preview %}
+
+<h2>Dataset Preview</h2>
+
+{{preview|safe}}
+
+{% endif %}
+
+{% if column_types %}
+
+<h2>Column Types</h2>
+
+<ul>
+
+{% for col,type in column_types.items %}
+
+<li>{{col}} : {{type}}</li>
+
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
+{% if report %}
+
+<h2>Dataset Report</h2>
+
+<p>Total Rows : {{report.rows}}</p>
+
+<p>Total Columns : {{report.columns}}</p>
+
+<p>Missing Values : {{report.missing}}</p>
+
+<p>Duplicates : {{report.duplicates}}</p>
+
+{% endif %}
+
+{% if summary %}
+
+<h2>Data Profiling</h2>
+
+{{summary|safe}}
+
+{% endif %}
+
+{% if chart %}
+
+<h2>Data Visualization</h2>
+
+{{chart|safe}}
+
+{% endif %}
+
+{% if improvement %}
+
+<h2>Cleaning Result</h2>
+
+<p>Original Rows : {{original_rows}}</p>
+
+<p>Clean Rows : {{clean_rows}}</p>
+
+<p>Removed Rows : {{rows_removed}}</p>
+
+<p>Accuracy Improved by : {{improvement}} %</p>
+
+<p>Dataset Quality Score : {{quality_score}} / 100</p>
+
+<br>
+
+<a href="{{download_file}}" download>
+
+<button>Download Cleaned Dataset</button>
+
+</a>
+
+{% endif %}
+
+{% if error %}
+
+<p style="color:red">{{error}}</p>
+
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer>
+<p>© 2026 DataPilot. All Rights Reserved.</p>
+</footer>
+
+</body>
+
+</html>
