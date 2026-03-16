@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Datapilot | About</title>
+<title>DataPilotLabs | About</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% load static %}
 
@@ -193,15 +193,16 @@ color:#aaa;
 
 <a class="navbar-brand d-flex align-items-center" href="#">
 <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-Datapilot
+DatapilotLabs
 </a>
 
 <div class="ms-auto">
-<a href="{% url 'home'%}" class="btn btn-outline-light me-2">Home</a>
-<a href="{% url 'about'%}" class="btn btn-outline-light me-2">About</a>
-<a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
-<a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
-<a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+        <a href="{% url 'home'%}" class="btn btn-primary me-2">Home</a>
+    <a href="{% url 'about' %}" class=" btn btn-primary me-2">About</a>
+    <a href="{% url 'contact'%}" class="btn btn-primary me-2">Contact</a>
+
+<!-- <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+<a href="{% url 'signup' %}" class="btn btn-primary">Signup</a> -->
 </div>
 
 </div>
@@ -277,7 +278,7 @@ raw data into meaningful insights.
 
 <div class="container">
 
-<h1>Our Journey</h1>
+<h1>Our <span class="data-color">Journey</span></h1>
 
 <p>
 DataPilot began with a simple idea. To make data science more accessible
@@ -306,7 +307,7 @@ to analyze faster and make smarter decisions.
 <div class="footer-left">
 <a class="navbar-brand d-flex align-items-center" href="#">
 <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-Datapilot
+DatapilotLabs
 </a>
 
 <p style="margin-top:16px; font-size: 30px;">
@@ -322,8 +323,8 @@ for modern organizations.
 <li><a href="{% url 'home'%}">Home</a></li>
 <li><a href="{% url 'about'%}">About</a></li>
 <li><a href="{% url 'contact'%}">Contact</a></li>
-<li><a href="{% url 'login' %}">Login</a></li>
-<li><a href="{% url 'signup' %}">Signup</a></li>
+<!-- <li><a href="{% url 'login' %}">Login</a></li>
+<li><a href="{% url 'signup' %}">Signup</a></li> -->
 </ul>
 </div>
 
@@ -331,7 +332,7 @@ for modern organizations.
 <div class="footer-contact">
 <h4>Contact</h4>
 <ul>
-<li>datapilot.ai@gmail.com</li>
+<li>datapilotlabs.ai@gmail.com</li>
 <li>Hyderabad, India</li>
 </ul>
 </div>
@@ -345,7 +346,7 @@ for modern organizations.
 </main>
 
 <footer>
-<p>© 2026 DataPilot. All Rights Reserved.</p>
+<p>© 2026 DataPilotLabs. All Rights Reserved.</p>
 </footer>
 
 <script>

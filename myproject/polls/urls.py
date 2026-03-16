@@ -10,7 +10,9 @@ urlpatterns = [
     path('about/',views.about_view,name='about'),
     path('contact/',views.contact_view,name='contact'),
     path("smartclean/", views.smart_clean, name="smart_clean"),
-    path("visual/",views.data_dashboard,name="data_dashboard")
+    path("visual/",views.data_dashboard,name="data_dashboard"),
+    path("port/",views.port_view,name="port")
+
     
 
 ]

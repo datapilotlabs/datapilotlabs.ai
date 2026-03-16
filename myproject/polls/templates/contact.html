@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"> 
-<title>Datapilot | Contact</title>
+<title>DatapilotLabs | Contact</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% load static %}
 
@@ -68,9 +68,7 @@ margin:auto;
 line-height:1.7;
 }
 
-
-/* cta */
-/* CTA SECTION */
+/* CTA */
 
 .cta{
 padding:100px 20px;
@@ -78,32 +76,56 @@ text-align:center;
 background:linear-gradient(135deg,#0185f9,#044089);
 }
 
-.cta-title{
-font-weight:900;
-font-size:60px;
-margin-bottom:10px;
+/* CONTACT BOX */
+
+.contact-box{
+max-width:420px;
+margin:40px auto;
+background:#0f172a;
+padding:25px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.08);
 }
 
-.cta-text{
-font-size:28px;
-margin-top:20px;
-margin-bottom:30px;
+.contact-box form{
+display:flex;
+flex-direction:column;
+gap:14px;
 }
 
-.cta-btn{
+.contact-box input,
+.contact-box textarea{
+padding:10px;
+border-radius:6px;
+border:1px solid #1e293b;
+background:#060910;
+color:white;
+font-size:14px;
+outline:none;
+width:100%;
+}
+
+.contact-box textarea{
+resize:none;
+height:90px;
+}
+
+.contact-box button{
+padding:10px;
+border:none;
+border-radius:6px;
 background:white;
-color:blue;
-padding:14px 35px;
-font-size:18px;
-border-radius:8px;
-text-decoration:none;
+color:#0373fc;
 font-weight:600;
+cursor:pointer;
+transition:0.3s;
 }
 
-.cta-btn:hover{
-background:#ffffff;
+.contact-box button:hover{
+background:#e8e8e8;
 }
-/* ---------- FIXED FOOTER SECTION ---------- */
+
+/* FOOTER */
 
 .contact{
 padding:80px 20px;
@@ -121,11 +143,6 @@ margin-top:40px;
 
 .footer-left{
 max-width:400px;
-text-align:left;
-}
-
-.footer-links,
-.footer-contact{
 text-align:left;
 }
 
@@ -155,31 +172,12 @@ padding:20px;
 text-align:center;
 color:#aaa;
 }
-.demo-btn{
-background:white;
-color:#0373fc;
-font-weight:600;
-}
-
-.demo-btn:hover{
-color:#235ea5;
-}
-#particles{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-background:#060910;
-}
-/* ---------- END FOOTER FIX ---------- */
 
 </style>
 </head>
 
 <body>
-<canvas id="particles"></canvas>
+
 <main>
 
 <nav class="navbar navbar-expand-lg navbar-dark">
@@ -187,35 +185,31 @@ background:#060910;
 
 <a class="navbar-brand d-flex align-items-center" href="#">
 <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-Datapilot
+DatapilotLabs
 </a>
 
 <div class="ms-auto">
-<a href="{% url 'home'%}" class="btn btn-outline-light me-2">Home</a>
-<a href="{% url 'about'%}" class="btn btn-outline-light me-2">About</a>
-<a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
-<a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
-<a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+<a href="{% url 'home'%}" class="btn btn-primary me-2">Home</a>
+<a href="{% url 'about'%}" class="btn btn-primary me-2">About</a>
+<a href="{% url 'contact'%}" class="btn btn-primary me-2">Contact</a>
 </div>
 
 </div>
 </nav>
 
-<br><br>
-<br><br>
-<section class="about">
+<br><br><br><br>
 
+<section class="about">
 <div class="container">
 
 <h1>Get in <span class="data-color">Touch</span></h1>
 
-</div>
 <p>Datapilot is here to help you transform raw data into meaningful insights through intelligent Automation.</p>
-<p>Reach out to us for support, collaborations, or any questions about our platform.</p>
-</section>
-<br><br><br><br><br><br>
 
-<!-- CTA -->
+<p>Reach out to us for support, collaborations, or any questions about our platform.</p>
+
+</div>
+</section>
 
 <section class="cta">
 
@@ -233,34 +227,23 @@ Today
 Contact Us and start analyzing datasets instantly.
 </p>
 
-<a href="{% url 'signup' %}" class="btn btn-lg demo-btn">
-    Schedule a Demo
-</a>
+<div class="contact-box">
+
+<form action="mailto:datapilotlabs.ai@gmail.com" method="post" enctype="text/plain">
+
+<input type="email" name="email" placeholder="Enter your email address" required>
+
+<textarea name="message" placeholder="Write your message here..." required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
 </div>
-</section>
-
-<section class="about">
-<div class="container">
-
-<h1>Our Journey</h1>
-
-<p>
-DataPilot began with a simple idea. To make data science more accessible
-and less time-consuming. Many students, developers, and organizations
-struggle with repetitive tasks like data cleaning, visualization,
-and model building.
-</p>
-
-<p>
-Our journey is driven by the belief that powerful data tools should not
-be limited to experts alone. We aim to empower anyone working with data
-to analyze faster and make smarter decisions.
-</p>
 
 </div>
 
 </section>
-
 
 <section id="contact" class="contact">
 
@@ -271,15 +254,14 @@ to analyze faster and make smarter decisions.
 <div class="footer-left">
 <a class="navbar-brand d-flex align-items-center" href="#">
 <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-Datapilot
+DatapilotLabs
 </a>
 
-<p style="margin-top:16px; font-size: 30px;">
+<p style="margin-top:16px; font-size:30px;">
 Delivering quantifiable growth with enterprise-grade AI solutions
 for modern organizations.
 </p>
 </div>
-
 
 <div class="footer-links">
 <h4>Quick Links</h4>
@@ -287,16 +269,13 @@ for modern organizations.
 <li><a href="{% url 'home'%}">Home</a></li>
 <li><a href="{% url 'about'%}">About</a></li>
 <li><a href="{% url 'contact'%}">Contact</a></li>
-<li><a href="{% url 'login' %}">Login</a></li>
-<li><a href="{% url 'signup' %}">Signup</a></li>
 </ul>
 </div>
-
 
 <div class="footer-contact">
 <h4>Contact</h4>
 <ul>
-<li>datapilot.ai@gmail.com</li>
+<li>datapilotlabs.ai@gmail.com</li>
 <li>Hyderabad, India</li>
 </ul>
 </div>
@@ -310,121 +289,8 @@ for modern organizations.
 </main>
 
 <footer>
-<p>© 2026 DataPilot. All Rights Reserved.</p>
+<p>© 2026 DataPilotLabs. All Rights Reserved.</p>
 </footer>
-<script>
-
-/* GET CANVAS */
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-
-/* ---------------- STARS ---------------- */
-
-let stars = [];
-
-for (let i = 0; i < 150; i++) {
-    stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5
-    });
-}
-
-
-/* -------------- METEOR COLORS -------------- */
-
-const colors = [
-    "#00c6ff",
-    "#ff4ecd",
-    "#7c4dff",
-    "#00ffcc",
-    "#ffd700"
-];
-
-
-/* -------------- METEORS -------------- */
-
-let meteors = [];
-
-function createMeteor() {
-
-    meteors.push({
-        x: Math.random() * canvas.width,
-        y: 0,
-        length: Math.random() * 100 + 60,
-        speed: Math.random() * 6 + 4,
-        opacity: 1,
-        color: colors[Math.floor(Math.random() * colors.length)]
-    });
-
-}
-
-setInterval(createMeteor, 1500);
-
-
-/* -------------- ANIMATION -------------- */
-
-function animate() {
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-    /* DRAW STARS */
-
-    stars.forEach(star => {
-
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fillStyle = "white";
-        ctx.fill();
-
-    });
-
-
-    /* DRAW METEORS */
-
-    meteors.forEach((meteor, index) => {
-
-        ctx.beginPath();
-
-        ctx.moveTo(meteor.x, meteor.y);
-        ctx.lineTo(meteor.x - meteor.length, meteor.y + meteor.length);
-
-        ctx.strokeStyle = meteor.color;
-        ctx.lineWidth = 3;
-
-        ctx.stroke();
-
-        meteor.x -= meteor.speed;
-        meteor.y += meteor.speed;
-
-        if (meteor.x < -100 || meteor.y > canvas.height + 100) {
-            meteors.splice(index, 1);
-        }
-
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-
-/* ----------- RESPONSIVE ----------- */
-
-window.addEventListener("resize", () => {
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-});
-
-</script>
 
 </body>
 </html>

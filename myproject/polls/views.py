@@ -66,6 +66,8 @@ def about_view(request):
     return render(request, 'about.html')
 def contact_view(request):
     return render(request,'contact.html' )
+def port_view(request):
+    return render(request, 'port.html')
 
 
 #python backend logic for smartclean

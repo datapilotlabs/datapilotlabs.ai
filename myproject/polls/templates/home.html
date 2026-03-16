@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Datapilot</title>
+    <title>DataPilotLabs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {% load static %}
@@ -260,15 +260,15 @@ font-weight: bold;
 
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-            Datapilot
+            DatapilotLabs
         </a>
 
         <div class="ms-auto">
-            <a href="#" class="btn btn-outline-light me-2">Home</a>
-            <a href="{% url 'about' %}" class="btn btn-outline-light me-2">About</a>
-            <a href="{% url 'contact'%}" class="btn btn-outline-light me-2">Contact</a>
-            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
-            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+            <a href="#" class="btn btn-primary me-2">Home</a>
+            <a href="{% url 'about' %}" class=" btn btn-primary me-2">About</a>
+            <a href="{% url 'contact'%}" class="btn btn-primary me-2">Contact</a>
+            <!-- <a href="{% url 'login' %}" class="btn btn-outline-light me-2">Login</a>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a> -->
         </div>
 
     </div>
@@ -295,13 +295,13 @@ Turn Raw Data into Intelligent Insights
 
 <br>
 
-<a href="{% url 'signup' %}" class="btn btn-primary hero-btn me-4">
-Get Started → 
+<a href="{% url 'dashboard' %}" class="btn btn-primary hero-btn me-4">
+Get Started &#10140;
 </a>
 
-<a href="{% url 'login' %}" class="btn btn-primary hero-btn">
+<!-- <a href="{% url 'login' %}" class="btn btn-primary hero-btn">
 Login
-</a>
+</a> -->
 
 </div>
 </section>
@@ -405,7 +405,7 @@ Today
 Contact Us and start analyzing datasets instantly.
 </p>
 
-<a href="{% url 'signup' %}" class="btn btn-light btn-lg demo-btn">
+<a href="{% url 'contact' %}" class="btn btn-light btn-lg demo-btn">
 Contact Us
 </a>
 </div>
@@ -414,7 +414,7 @@ Contact Us
 
 <!-- CLIENTS -->
 
-<section class="clients">
+<!-- <section class="clients">
 
 <div class="container">
 
@@ -427,7 +427,7 @@ Trusted by data scientists, researchers and startups.
 </div>
 
 </section>
-
+ -->
 
 <!-- CONTACT / FOOTER -->
 
@@ -442,7 +442,7 @@ Trusted by data scientists, researchers and startups.
 
 <a class="navbar-brand d-flex align-items-center" href="#">
 <img src="{% static 'images/logo.png' %}" width="40" class="me-2">
-Datapilot
+DatapilotLabs
 </a>
 
 <p style="margin-top:16px; font-size: 30px;">
@@ -460,8 +460,8 @@ Delivering quantifiable growth with enterprise-grade AI solutions for modern org
 <li><a href="{% url 'home'%}">Home</a></li>
 <li><a href="{% url 'about'%}">About</a></li>
 <li><a href="{% url 'contact'%}">Contact</a></li>
-<li><a href="{% url 'login' %}">Login</a></li>
-<li><a href="{% url 'signup' %}">Signup</a></li>
+<!-- <li><a href="{% url 'login' %}">Login</a></li>
+<li><a href="{% url 'signup' %}">Signup</a></li> -->
 </ul>
 
 </div>
@@ -472,7 +472,7 @@ Delivering quantifiable growth with enterprise-grade AI solutions for modern org
 <h4>Contact</h4>
 
 <ul>
-<li>datapilot.ai@gmail.com</li>
+<li>datapilotlabs.ai@gmail.com</li>
 <li>Hyderabad, India</li>
 </ul>
 
@@ -488,7 +488,7 @@ Delivering quantifiable growth with enterprise-grade AI solutions for modern org
 
 
 <footer>
-<p>© 2026 DataPilot. All Rights Reserved.</p>
+<p>© 2026 DataPilotLabs. All Rights Reserved.</p>
 </footer>
 
 <script>
