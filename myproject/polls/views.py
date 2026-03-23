@@ -10,57 +10,57 @@ def home_view(request):
     return render(request, 'home.html',{'clients':clients})
     
 # LOGIN VIEW
-def login_view(request):
-    if request.method == "POST":
+# def login_view(request):
+#     if request.method == "POST":
 
-        username = request.POST['username']
-        password = request.POST['password']
+#         username = request.POST['username']
+#         password = request.POST['password']
 
-        user = authenticate(request, username=username, password=password)
+#         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')
+#         if user is not None:
+#             login(request, user)
+#             return redirect('dashboard')
 
-        else:
-            messages.error(request, "Invalid username or password")
+#         else:
+#             messages.error(request, "Invalid username or password")
 
-    return render(request, 'login.html')
-# SIGNUP VIEW
-def signup_view(request):
+#     return render(request, 'login.html')
+# # SIGNUP VIEW
+# def signup_view(request):
 
-    if request.method == "POST":
+#     if request.method == "POST":
 
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+#         username = request.POST['username']
+#         email = request.POST['email']
+#         password = request.POST['password']
 
-        user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password
-        )
+#         user = User.objects.create_user(
+#             username=username,
+#             email=email,
+#             password=password
+#         )
 
-        user.save()
+#         user.save()
 
-        messages.success(request, "Account created successfully")
-        return redirect('login')
+#         messages.success(request, "Account created successfully")
+#         return redirect('login')
 
-    return render(request, 'signup.html')
-
-
-# DASHBOARD
-@login_required
-def dashboard(request):
-
-    return render(request, 'dashboard.html', {'username': request.user.username})
+#     return render(request, 'signup.html')
 
 
-# LOGOUT
-def logout_view(request):
+# # DASHBOARD
+# @login_required
+# def dashboard(request):
 
-    logout(request)
-    return redirect('login')
+#     return render(request, 'dashboard.html', {'username': request.user.username})
+
+
+# # LOGOUT
+# def logout_view(request):
+
+#     logout(request)
+#     return redirect('login')
 
 def about_view(request):
     return render(request, 'about.html')
@@ -68,6 +68,9 @@ def contact_view(request):
     return render(request,'contact.html' )
 def port_view(request):
     return render(request, 'port.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
 
 
 #python backend logic for smartclean
