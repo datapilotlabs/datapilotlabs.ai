@@ -1,0 +1,51 @@
+Django to Render Deployment Guide
+Your Django project is now successfully configured for production on Render! I've made the necessary adjustments to ensure a smooth deployment process.
+
+Changes Made
+requirements.txt
+: Added production dependencies (gunicorn, dj-database-url, psycopg2-binary, whitenoise).
+build.sh
+: Created a script to automate the build phase (installing dependencies, collecting static files, running database migrations).
+myproject/settings.py
+:
+Configured SECRET_KEY, DEBUG, and ALLOWED_HOSTS to draw from environment variables.
+Set up dj-database-url to handle Render's PostgreSQL databases effortlessly while maintaining local SQLite capability.
+Configured whitenoise to properly serve static files in production.
+Next Steps to Deploy
+Follow these steps to get your app live on Render:
+
+1. Push Code to GitHub
+First, you need to push these changes to a GitHub repository:
+
+bash
+git add .
+git commit -m "Configure Django for Render deployment"
+git push origin main
+(If you haven't initialized a git repository yet, run git init, add your remote, and push)
+
+2. Connect to Render
+Go to your Render Dashboard.
+Click New + and select Web Service.
+Choose Build and deploy from a Git repository and connect the GitHub repository you just pushed to.
+3. Configure the Web Service
+Fill in the following details when creating the Web Service:
+
+Environment: Python 3
+Build Command: 
+./build.sh
+Start Command: gunicorn myproject.wsgi:application
+4. Set Environment Variables
+Scroll down to the Environment Variables section and click Add Environment Variable. Add the following:
+
+Key: PYTHON_VERSION | Value: 3.11.8 (or your preferred Python 3 version)
+Key: SECRET_KEY | Value: (Generate a random long string for production)
+Optional: Add PostgreSQL Database
+If you want to use a powerful database instead of the temporary SQLite:
+
+Create a PostgreSQL instance on Render Dashboard.
+Get the Internal Database URL from its settings.
+Add a new Environment Variable to your Web Service:
+Key: DATABASE_URL | Value: (Paste the Internal Database URL)
+Once configured, click Create Web Service. Render will automatically run 
+./build.sh
+, install your dependencies, and start your Django app!
